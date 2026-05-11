@@ -7,7 +7,7 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: "Falta universeId" })
     }
     
-    let url = `https://badges.roblox.com/v1/universes/${universeId}/badges?limit=100&sortOrder=Asc`
+    let url = `https://badges.roblox.com/v1/universes/${universeId}/badges?limit=100&sortOrder=Asc&includeDisabled=true`
     if (cursor) url += `&cursor=${cursor}`
     
     const respuesta = await fetch(url)
@@ -15,4 +15,3 @@ export default async function handler(req, res) {
     
     res.status(200).json(datos)
 }
-
